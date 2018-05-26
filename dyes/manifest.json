@@ -1,0 +1,13 @@
+{
+	"short_name": "GW2Dyes",
+	"name": "Kulinda's GW2 Dye Browser",
+	"icons": [{
+		"src": "favicon.png",
+		"sizes": "256x256",
+		"type": "image/png"
+	}],
+	"start_url": "./index.html",
+	"display": "standalone",
+	"theme_color": "#440000",
+	"background_color": "#000000"
+}
