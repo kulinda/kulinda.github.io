@@ -1,0 +1,13 @@
+{
+	"short_name": "GW2Mounts",
+	"name": "Kulinda's GW2 Mount Adoption Helper",
+	"icons": [{
+		"src": "favicon.png",
+		"sizes": "64x64",
+		"type": "image/png"
+	}],
+	"start_url": "./index.html",
+	"display": "standalone",
+	"theme_color": "#000000",
+	"background_color": "#ffffff"
+}
