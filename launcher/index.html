@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="theme-color" content="#440000">
+		<title>Kulinda's Guild Wars 2 Launcher</title>
+		<link rel="stylesheet" type="text/css" href="../kulinda.css">
+		<link rel="shortcut icon" href="./favicon.png">
+		<style>
+		body {
+			padding: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<h1>Kulinda's Guild Wars 2 Launcher</h1>
+		<h2>In five easy steps</h2>
+
+		<h3>Preamble</h3>
+		In the patch of January 22nd, 2019, arena.net removed the -email and -password command line arguments,
+		making it a bit more tricky to log into multiple accounts.<br />
+		<br />
+		But there is a different way to auto-login into multiple accounts. The game already has an auto-login feature, which stores the credentials of your previously used account in a file called Local.dat. By keeping multiple versions of this file, and copying them around before starting Guild Wars 2, we can achieve auto-login with multiple accounts.<br />
+		<br />
+		Note: This will NOT allow you to run multiple accounts at the same time. This is NOT for multiboxing!<br />
+		<br />
+
+		<h3>Step 1: Prepare a folder somewhere</h3>
+		<img src="step_1.png" /><br />
+		Just put it anywhere, Desktop or Documents is fine. Give it any name you like.
+
+		<h3>Step 2: Get the batch file</h3>
+		Download <a href="run_gw2.bat" target="_blank">run_gw2.bat</a> into the newly created folder.
+
+		<h3>Step 3: Configure the batch file</h3>
+		Edit the batch file:<br />
+		<img src="step_3a.png" /><br />
+		At the top, change the path to whereever you installed Guild Wars 2:<br />
+		<img src="step_3b.png" /><br />
+		At the bottom, change the launch options if you like. -autologin is required, the other two are optional. You can find a list of <a href="https://wiki.guildwars2.com/wiki/Command_line_arguments" target="_blank">Command Line Arguments</a> on the wiki.<br />
+		<img src="step_3c.png" /><br />
+		<br />
+		While you're looking at the file, make sure you understand what it does, and double-check that there's nothing malicous.
+
+		<h3>Step 4: Create one shortcut per account</h3>
+		Right-click the run_gw2.bat again, select "Create Shortcut". Then right-click the shortcut, select "Properties".<br />
+		<img src="step_4.png" /><br />
+		In the Target field, append a space, then a name for your account. Mine are named A, B, C..., but feel free to use more descriptive names.<br />
+		Optionally click "Change Icon", browse for the Gw2.exe, and select its icon.<br />
+		Move the shortcut where you want it, or pin it to the taskbar.<br />
+		<h3>Step 5: Run Guild Wars 2</h3>
+		Run the shortcut. Enter your login data, check that account name and password are remembered, and log in. The next time you tun this shortcut, you will login automatically.<br />
+		<br />
+		Repeat steps 4 and 5 once for each account.<br />
+		<h3>Bonus Step: Enjoy the game</h3>
+		And make sure that everyone else gets to enjoy the game as well. Be excellent to each other.<br />
+		<br />
+		<br />
+		<a href="../">Back to kulinda.github.io</a><br />
+		<br />
+		<br />
+	</body>
+</html>
