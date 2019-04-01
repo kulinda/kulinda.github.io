@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>BuildWars - Developer Diary</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<link href="index.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="devdiary">
+
+<h1>BuildWars Developer Diary</h1>
+
+Hi. I'm Kulinda, I wrote <a href="./index.html" target="_blank" rel="noopener noreferrer">this thing</a>, and here are a couple of random ramblings about the development process.<br />
+
+<h1>The Idea</h1>
+I started this April Fool's early, during last christmas holidays. I worked on a game concept, but it turned out to require a lot of manual (boring) work to finish, and it wasn't really as fun to play as I had hoped.<br />
+<br />
+So I gave up on it.<br />
+<br />
+Later, I got back into the minecraft fever. I've never even played minecraft (and I refuse to buy stuff from the windows store), so I keep looking for a minecraft-like game that isn't actually minecraft. Portal Knights is fun, but has small worlds and a finite progression system. Creativerse has larger worlds, but suffers from the f2p model, and the enemy death-flashes give me headaches. Trove has a powerful engine but a boring, grindy progression, and virtually no building at all.<br />
+<br />
+Screw this. I'll write my own.<br />
+<br />
+Of course, this was at the beginning of March. A month for a full voxel engine from scratch should be plenty, right? Never mind that I have a job to attend, social interactions to maintain and Guild Wars 2 to play. Squeezing the required hours into my evenings and weekends was a tight fit.<br />
+
+<h1>The Implementation</h1>
+There are several helpful tutorials on voxel engines on the internet, including one from a minecraft dev. I read them all, to get an understanding of a voxel engine. Lots of different modules and problems, but every single module conceptually simple. Given enough time, I should be able to pull that off.<br />
+<br />
+If you're interested, here are a few that I read, in no particular order. The internet has plenty more of them.<br />
+<ul>
+	<li><a href="https://sites.google.com/site/letsmakeavoxelengine/" target="_blank" rel="noopener noreferrer">Let's Make a Voxel Engine</a></li>
+	<li><a href="https://dave.uesp.net/wiki/Block_Land" target="_blank" rel="noopener noreferrer">Block Land</a></li>
+	<li><a href="https://en.wikibooks.org/wiki/OpenGL_Programming#Glescraft" target="_blank" rel="noopener noreferrer">Glescraft</a></li>
+	<li><a href="https://tomcc.github.io/2014/08/31/visibility-1.html" target="_blank" rel="noopener noreferrer">Minecraft's Cave Culling Algorithm</a></li>
+</ul>
+
+<h2>Webcraft</h2>
+<a href="https://github.com/Overv/WebCraft" target="_blank" rel="noopener noreferrer">WebCraft</a> is a browser-based minecraft-like voxel-engine. Just what I need, right? It hasn't seen new development since 2011, but surely I can fix that up.<br />
+<br />
+How naive I was.<br />
+<br />
+I don't mean to badmouth a hobby developer. That really isn't fair, and I applaud anyone who sits down to create and share something with the world. But the engine simply didn't match my requirements. None of the code was optimized for performance, and none of the code was prepared to handle larger worlds. Try creating a world larger than about 50x50 blocks, and it will grind to a halt.<br />
+<br />
+The world I needed was more like 1000x1000 blocks. I had to do better. I had to write something on my own.<br />
+<br />
+But I did use WebCraft as a stepping stone. Had I written everything from scratch, it would have been difficult to test any of it until I reached the first playable prototype. Starting with WebCraft and replacing one module after the other allowed me to have a playable engine at all times, making testing a lot easier.<br />
+<br />
+In no particular order, I organized the voxel information into fixed-size chunks and put the chunks into both a sparse Octree and a coordinate-based hashmap. I rewrote the renderer with performance in mind, implemented octree-based Frustum Culling, used a distance-based queue both for front-to-back rendering (allowing the GPU to discard pixels based on z-buffer early) and to prioritize mesh-regeneration. I implemented ray casting to determine which block the player aims at (WebCraft would render the scene again with a different color per block, then query pixel values of the render target - that's slow and limits your world to 256x256x256 blocks). I added some fog in the distance. I implemented some simple directional diffuse lighting. I rewrote the mesh generation for simplicity and performance. I changed the coordinate system to match that of guild wars 2. I rewrote player movement and collision detection from scratch.<br />
+<br />
+Lots of hours later, not a single line of the original WebCraft remained. The engine can now handle huge worlds at playable frame rates, the main limit being memory consumption.<br />
+
+<h2>Tyria3DLibrary</h2>
+Originally developed by <a href="https://github.com/RequestTimeout408/Tyria3DLibrary" target="_blank" rel="noopener noreferrer">RequestTimeout408</a>, then maintained by <a href="https://github.com/njibhu/Tyria3DLibrary" target="_blank" rel="noopener noreferrer">njibhu</a>, then abandoned again.<br />
+<br />
+It can read the Gw2.dat, extract map and texture data, and render it. Just what I need!<br />
+<br />
+So in theory I can just load up Queensdale, extract the geometry information and create a voxel world from it. In practice, that took a lot longer than I expected. It looks like t3dlib was undergoing some major re-architecturing when the author lost interest. Console warnings everywhere. A build system that no longer worked. Comments like // DO NOT REMOVE THE FOLLOWING, followed by a line that's commented out.<br />
+<br />
+Again, I'm not trying to complain about other people's work, just explaining why it took a while to work through it. I almost gave up on the whole project after spending hours trying to figure out why my voxel world had the wrong textures. Luckily, an idea came to me later that night as I was trying to sleep, and I managed to debug and fix most of the issues the following day.<br />
+
+<h2>Terrain and 3D Models</h2>
+Maps in GW2 have a "terrain" model, which is just a regular grid with height and texture information. Excellent to turn into voxels, in theory. A map also contains 3d models, for houses, trees etc - Queensdale has 7117 of them. Without the models, the map doesn't look right, especially around caves (the terrain models the cave's floor, and the ceiling is added as a 3d model). T3Dlib can load and render the 3d models, but extracting the required information from deep within the library turned out to be too complicated.<br />
+<br />
+Instead, I exported the "collision models", which were easier to get my hands on. But they aren't textured. And turning 3d models into voxels is a difficult thing to implement - I coded an approximation, but that would turn everything into oversized blobs. So I overlayed the collision models onto my voxel world, then I either filled them in and manually fixed them up, or built them manually from scratch. This took waaaay too long when I was almost out of time, so some landmarks I've simply skipped.<br />
+
+<h1>Unfulfilled Wishes</h1>
+I wanted to implement a day/night-cycle, shadows based on sun position, a torch for local lighting, more block interactions, bombs for faster digging, particle effects when destroying blocks, a proper GW2-themed UI with skill icons, a pickaxe in your hand, and a lot of other things. I ran out of time.<br />
+<br />
+The whole thing is also very much limited by the requirement to run in the browser. WebGL is based on OpenGL ES 2.0 from 2007, and it lacks geometry shaders, random memory access in shaders, loops in shaders and a lot of other things that would have been useful.<br />
+<br />
+There's also no real multithreading in the browser. WebWorkers are available, but the API is very limited and communication latency is high, making it quite difficult to use them in a low-latency rendering loop. The major problem is that submitting a task to a worker is final; there's no way to tell the worker to abort a task, for example because the player started looking somewhere else next frame. As I didn't have the time to write a full-blown task scheduler, I opted not to use WebWorkers at all.<br />
+
+<h1>The Result</h1>
+Overall, I guess I should be happy with it, even if I'm not. As a perfectionist, "good enough" is never good enough for me.<br />
+<br />
+But I reached a few important goals. I've learned a lot about voxel engines and WebGL. I finished and released a game (without an employer making me), even a small game, unlike the other half dozen of unfinished projects on my computer.<br />
+<br />
+And I hope I gave you all a chuckle and a bit of happiness in your lives.<br />
+
+<h1>FAQ</h1>
+
+<b>Why did you name it BuildWars?</b><br />
+Because I'm not witty enough for something more clever.<br />
+<br />
+<b>Why Queensdale?</b><br />
+Because I imagine it's the most recognizable place for most players. I couldn't use a city, because they heavily rely on 3d models. Look at them in tyria3d without models, see if you recognize anything.<br />
+<br />
+<b>Will you open source the engine?</b><br />
+I don't know yet. I've run out of time, and I didn't manage to clean up the code. If you want to build upon my work, contact me, and I'll consider it.<br />
+<br />
+<b>Have you done any other cool things?</b><br />
+All my guild wars-related things are on <a href="https://kulinda.github.io/" target="_blank" rel="noopener noreferrer">https://kulinda.github.io/</a>.<br />
+<br />
+<b>How do I thank you?</b><br />
+I released the game in order for people to play it. If you liked it, share it with your friends and guilds.<br />
+<br />
+Consider creating and sharing something on your own. It's a lot more boring work and a lot less instant gratification than consuming a video game, but the feeling when you finish something is worth it.<br />
+<br />
+If you feel like thanking me with money, reddit gold, or gems, please don't. Donate to a charity of your choice instead.<br />
+
+		</div>
+	</body>
+</html>

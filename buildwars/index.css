@@ -1,0 +1,179 @@
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	background: black;
+	color: rgb(211, 208, 207); /* Celestial on cloth */
+}
+
+h1, h2 {
+	color: rgb(156, 126, 81); /* Antique Gold on cloth */
+}
+a, a:visited {
+	color: #66f;
+	transition: color 0.5s ease;
+}
+a:hover {
+	color: #aaf;
+}
+
+
+#debuginfo {
+	position: absolute;
+	left: 10px;
+	top: 30px;
+	pointer-events: none;
+	white-space: pre;
+	text-shadow: 1px 1px 0px black;
+}
+
+#gamecanvas {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	width: 100%;
+	height: calc(100% - 2em);
+
+	cursor: crosshair;
+
+	background-color: black;
+}
+
+#footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 2em;
+	line-height: 2em;
+	color: white;
+	text-align: center;
+}
+
+#helper {
+	pointer-events: none;
+
+	position: absolute;
+	left: 1em;
+	bottom: 3em;
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	text-shadow: #000000 1px 1px 0px;
+}
+
+#helper .key {
+	display: inline-block;
+	font-size: 80%;
+	background-color: #bbb;
+	border: 2px solid white;
+	border-color: #ddd #999 #999 #ddd;
+	color: black;
+	text-shadow: none;
+	margin: 0 1px;
+	padding: 0 3px;
+}
+
+#devdiary {
+	padding: 1em;
+	max-width: 50em;
+	margin: 0 auto;
+}
+
+
+#loading {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 2em;
+	opacity: 1;
+	visibility: visible;
+}
+#loading.invisible {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 2s ease, visibility 0s linear 2s;
+}
+
+#loading_bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#loading_overlay {
+	position: absolute;
+	bottom: 40%;
+	left: calc(50% - 10em);
+	width: 20em;
+	right: 40%;
+	min-height: 2em;
+
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	text-shadow: #000000 1px 1px 0px;
+
+	text-align: center;
+}
+#loading_progress {
+	white-space: pre-line;
+}
+
+#loading_start {
+	margin-top: 1em;
+	visibility: hidden;
+}
+#loading_start.visible {
+	visibility: visible;
+}
+
+
+#starpopup {
+	pointer-events: none;
+
+	position: absolute;
+	left: calc(50% - 10em);
+	width: 20em;
+	top: 20%;
+
+	padding: 1em;
+	border-radius: 0.5em;
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	text-shadow: #000000 1px 1px 0px;
+	text-align: center;
+
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 1s ease, visibility 0 linear 1s;
+}
+#starpopup.visible {
+	opacity: 1;
+	visibility: visible;
+	transition: none;
+}
+#starpopup0 {
+	font-size: 130%;
+	margin-bottom: 0.5em;
+}
+#starpopup1 {
+	font-size: 110%;
+	margin-bottom: 0.5em;
+	color: #ff0;
+}
+#starpopup2 {
+	font-size: 80%;
+}
+#run.highlight {
+	color: #ff0;
+}
