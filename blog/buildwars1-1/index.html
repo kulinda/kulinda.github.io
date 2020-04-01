@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="theme-color" content="#440000" />
+	<title>Build Wars 1.1: Release and Dev Diary</title>
+	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;index.css" />
+	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.css" />
+	<link rel="shortcut icon" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;favicon.ico">
+	
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;rss.xml">
+	
+
+	
+	
+	<script src="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.js" async="async"></script>
+</head>
+
+<body>
+	
+<main class="post">
+	<div class="post-header">
+		<h1>Build Wars 1.1: Release and Dev Diary</h1>
+		<small>Lots of work, still looks the same.</small><br />
+		
+		<small>
+			Written by kulinda on
+			<time datetime="2020-04-01">2020-04-01</time>
+		</small>
+		
+	</div>
+	<div class="post-content">
+		<p>On April 1st 2019, I released a game called Build Wars. You can <a href="https://kulinda.github.io/buildwars/">play the original game</a> or <a href="https://kulinda.github.io/blog/buildwars/">read the previous developer diary</a>.</p>
+<p>This year, I released <a href="https://kulinda.github.io/buildwars1-1/">an updated game</a>, and you're reading the updated developer diary right now.</p>
+<p id="zola-continue-reading"><a name="continue-reading"></a></p>
+<h3 id="let-s-rewrite-the-whole-thing">Let's rewrite the whole thing</h3>
+<p>One of the things I learned from the previous game was that javascript is mostly unsuitable for this kind of game development. Important data structures (like tuples, hash maps over tuples, octrees) are not natively supported, and javascript does not provide the required tools to implement them in a performant way.</p>
+<p>Enter <a href="https://webassembly.org/">WebAssembly</a>. You can compile different languages (like C++) into WebAssembly, and your browser can execute WebAssembly. The execution is still sandboxed, so it's as safe as javascript, but you can use the full flexibility of C++. Porting Build Wars looked like a fun exercise to learn WebAssembly.</p>
+<p>Of course, learning one new and overwhelming technique at a time is for chumps. Instead of using a language I know (like C++), I used a language I didn't know: Rust. Rust is a modern systems programming language that's as fast as C++, but much safer. It doesn't need to stay compatible with concepts introduced in C in 1973, thus it can freely apply all the theoretical advances in language design made in the last half century.</p>
+<h3 id="lessons-from-rust">Lessons from rust</h3>
+<p>Rust's major selling point is that the language can detect (and prevent) whole classes of errors when compiling. In C++, it's up to the programmer to prevent these errors. The second reason I picked rust is its excellent support for WebAssembly.</p>
+<p>As expected, diving into two new concepts at the same time wasn't the easiest thing to do, but I wanted to learn both of them anyway. No point in porting it to C++/WebAssembly, then again to Rust/WebAssembly, right?</p>
+<p>Luckily, Rust has <a href="https://doc.rust-lang.org/stable/book/">an excellent book</a>, which I read in full before starting the rewrite. Then I remembered a lesson from last year's transition from WebCraft into my own engine: do not write it from scratch, port it over gradually. Like last year, that approach worked well.</p>
+<p>Rust itself is a pleasure to write in; it is amazingly well designed. But, as any Rust beginner will tell you, the learning curve takes a sharp turn the first time you encounter the borrow checker. So I read a lot, gained a better understanding of the concept of borrows, and in the end I prevailed.</p>
+<p>The problems I had with javascript were gone. Having access to a low level language gave me the flexibility to do things the right way. The decision to port to rust paid off - I learned a lot, and the code is simpler and more readable. I've also measured 2x to 10x performance improvements for different modules.</p>
+<p>In short: porting the engine was a success.</p>
+<h3 id="a-better-world-for-everyone">A better world for everyone</h3>
+<p>Now that the engine was fast and clean, I wanted to improve the map data. Last year, I managed to extract the terrain data using Tyria3D, but I failed to get the props - the 3d models for houses, bridges, trees, fences, cavern ceilings etc. As a workaround, I exported the collision data, then filled in blocks by hand - but as you can plainly see, that's ugly. This year, I wanted to do better. And back into Tyria3D I went.</p>
+<p>After spending weeks on this, I had a much better terrain extractor, cleaner code, faster and automated exports - but still no prop data.</p>
+<h3 id="hiatus">Hiatus</h3>
+<p>That was sometime summer or fall 2019. Then I stopped working on it. I don't remember the exact reason - frustration over my failure to extract props, other interesting projects, video games, general real life distractions? Probably a combination of all of those. I knew I wanted to get back to it, just not right now.</p>
+<p>Then suddenly it was March again and the deadline loomed.</p>
+<p>I had to make a tough decision: do I abandon everything else and grind through (like I did last year), or do I postpone the 2.0 release another year? With Corona hitting, the decision was easy. I decided against a stressful experience during these times. Instead I worked on improving the software I use to keep in touch with friends and family.</p>
+<p>So Build Wars 1.1 is mostly the same as 1.0 - except with a new engine. The map is block for block identical, I didn't even bother to put up new stars.</p>
+<p>Fingers crossed that I'll do better next year.</p>
+
+	</div>
+</main>
+
+</body>
+
+</html>

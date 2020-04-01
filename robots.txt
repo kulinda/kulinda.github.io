@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /legal/
+Disallow: /contact/
+Disallow: /categories/
+Sitemap: https://kulinda.github.io/sitemap.xml

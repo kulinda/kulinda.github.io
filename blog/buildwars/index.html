@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="theme-color" content="#440000" />
+	<title>BuildWars: Release and Dev Diary</title>
+	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;index.css" />
+	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.css" />
+	<link rel="shortcut icon" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;favicon.ico">
+	
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;rss.xml">
+	
+
+	
+	
+	<script src="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.js" async="async"></script>
+</head>
+
+<body>
+	
+<main class="post">
+	<div class="post-header">
+		<h1>BuildWars: Release and Dev Diary</h1>
+		<small>My biggest project yet..</small><br />
+		
+		<small>
+			Written by kulinda on
+			<time datetime="2019-04-01">2019-04-01</time>
+		</small>
+		
+	</div>
+	<div class="post-content">
+		<p>There's a new project, my biggest (and most useless) one yet: <a href="https://kulinda.github.io/buildwars/">Build Wars</a>.</p>
+<p>Go play it, then come back to read about its development!</p>
+<p id="zola-continue-reading"><a name="continue-reading"></a></p>
+<h2 id="buildwars-developer-diary">BuildWars Developer Diary</h2>
+<p>Here are a couple of random ramblings about the development process.</p>
+<h3 id="the-idea">The Idea</h3>
+<p>I started this April Fool's early, during last christmas holidays. I worked on a game concept, but it turned out to require a lot of manual (boring) work to finish, and it wasn't really as fun to play as I had hoped.</p>
+<p>So I gave up on it.</p>
+<p>Later, I got back into the minecraft fever. I've never even played minecraft (and I refuse to buy stuff from the windows store), so I keep looking for a minecraft-like game that isn't actually minecraft. Portal Knights is fun, but has small worlds and a finite progression system. Creativerse has larger worlds, but suffers from the f2p model, and the enemy death-flashes give me headaches. Trove has a powerful engine but a boring, grindy progression, and virtually no building at all.</p>
+<p>Screw this. I'll write my own.</p>
+<p>Of course, this was at the beginning of March. A month for a full voxel engine from scratch should be plenty, right? Never mind that I have a job to attend, social interactions to maintain and Guild Wars 2 to play. Squeezing the required hours into my evenings and weekends was a tight fit.</p>
+<h3 id="the-implementation">The Implementation</h3>
+<p>There are several helpful tutorials on voxel engines on the internet, including one from a minecraft dev. I read them all, to get an understanding of a voxel engine. Lots of different modules and problems, but every single module conceptually simple. Given enough time, I should be able to pull that off.</p>
+<p>If you're interested, here are a few that I read, in no particular order. The internet has plenty more of them.</p>
+<ul>
+<li><a href="https://sites.google.com/site/letsmakeavoxelengine/">Let's Make a Voxel Engine</a></li>
+<li><a href="https://dave.uesp.net/wiki/Block_Land">Block Land</a></li>
+<li><a href="https://en.wikibooks.org/wiki/OpenGL_Programming#Glescraft">Glescraft</a></li>
+<li><a href="https://tomcc.github.io/2014/08/31/visibility-1.html">Minecraft's Cave Culling Algorithm</a></li>
+</ul>
+<h3 id="webcraft">Webcraft</h3>
+<p><a href="https://github.com/Overv/WebCraft">WebCraft</a> is a browser-based minecraft-like voxel-engine. Just what I need, right? It hasn't seen new development since 2011, but surely I can fix that up.</p>
+<p>How naive I was.</p>
+<p>I don't mean to badmouth a hobby developer. That really isn't fair, and I applaud anyone who sits down to create and share something with the world. But the engine simply didn't match my requirements. None of the code was optimized for performance, and none of the code was prepared to handle larger worlds. Try creating a world larger than about 50x50 blocks, and it will grind to a halt.</p>
+<p>The world I needed was more like 1000x1000 blocks. I had to do better. I had to write something on my own.</p>
+<p>But I did use WebCraft as a stepping stone. Had I written everything from scratch, it would have been difficult to test any of it until I reached the first playable prototype. Starting with WebCraft and replacing one module after the other allowed me to have a playable engine at all times, making testing a lot easier.</p>
+<p>In no particular order, I organized the voxel information into fixed-size chunks and put the chunks into both a sparse Octree and a coordinate-based hashmap. I rewrote the renderer with performance in mind, implemented octree-based Frustum Culling, used a distance-based queue both for front-to-back rendering (allowing the GPU to discard pixels based on z-buffer early) and to prioritize mesh-regeneration. I implemented ray casting to determine which block the player aims at (WebCraft would render the scene again with a different color per block, then query pixel values of the render target - that's slow and limits your world to 256x256x256 blocks). I added some fog in the distance. I implemented some simple directional diffuse lighting. I rewrote the mesh generation for simplicity and performance. I changed the coordinate system to match that of Guild Wars 2. I rewrote player movement and collision detection from scratch.</p>
+<p>Lots of hours later, not a single line of the original WebCraft remained. The engine can now handle huge worlds at playable frame rates, the main limit being memory consumption.</p>
+<h3 id="tyria3dlibrary">Tyria3DLibrary</h3>
+<p>Originally developed by <a href="https://github.com/RequestTimeout408/Tyria3DLibrary">RequestTimeout408</a>, then maintained by <a href="https://github.com/njibhu/Tyria3DLibrary">njibhu</a>, then abandoned again.</p>
+<p>It can read the Gw2.dat, extract map and texture data, and render it. Just what I need!</p>
+<p>So in theory I can just load up Queensdale, extract the geometry information and create a voxel world from it. In practice, that took a lot longer than I expected. It looks like t3dlib was undergoing some major re-architecturing when the author lost interest. Console warnings everywhere. A build system that no longer worked. Comments like // DO NOT REMOVE THE FOLLOWING, followed by a line that's commented out.</p>
+<p>Again, I'm not trying to complain about other people's work, just explaining why it took a while to work through it. I almost gave up on the whole project after spending hours trying to figure out why my voxel world had the wrong textures. Luckily, an idea came to me later that night as I was trying to sleep, and I managed to debug and fix most of the issues the following day.</p>
+<h3 id="terrain-and-3d-models">Terrain and 3D Models</h3>
+<p>Maps in GW2 have a &quot;terrain&quot; model, which is just a regular grid with height and texture information. Excellent to turn into voxels, in theory. A map also contains 3d models, for houses, trees etc - Queensdale has 7117 of them. Without the models, the map doesn't look right, especially around caves (the terrain models the cave's floor, and the ceiling is added as a 3d model). T3Dlib can load and render the 3d models, but extracting the required information from deep within the library turned out to be too complicated.</p>
+<p>Instead, I exported the &quot;collision models&quot;, which were easier to get my hands on. But they aren't textured. And turning 3d models into voxels is a difficult thing to implement - I coded an approximation, but that would turn everything into oversized blobs. So I overlayed the collision models onto my voxel world, then I either filled them in and manually fixed them up, or built them manually from scratch. This took waaaay too long when I was almost out of time, so some landmarks I've simply skipped.</p>
+<h3 id="unfulfilled-wishes">Unfulfilled Wishes</h3>
+<p>I wanted to implement a day/night-cycle, shadows based on sun position, a torch for local lighting, more block interactions, bombs for faster digging, particle effects when destroying blocks, a proper GW2-themed UI with skill icons, a pickaxe in your hand, and a lot of other things. I ran out of time.</p>
+<p>The whole thing is also very much limited by the requirement to run in the browser. WebGL is based on OpenGL ES 2.0 from 2007, and it lacks geometry shaders, random memory access in shaders, loops in shaders and a lot of other things that would have been useful.</p>
+<p>There's also no real multithreading in the browser. WebWorkers are available, but the API is very limited and communication latency is high, making it quite difficult to use them in a low-latency rendering loop. The major problem is that submitting a task to a worker is final; there's no way to tell the worker to abort a task, for example because the player started looking somewhere else next frame. As I didn't have the time to write a full-blown task scheduler, I opted not to use WebWorkers at all.</p>
+<h3 id="the-result">The Result</h3>
+<p>Overall, I guess I should be happy with it, even if I'm not. As a perfectionist, &quot;good enough&quot; is never good enough for me.</p>
+<p>But I reached a few important goals. I've learned a lot about voxel engines and WebGL. I finished and released a game (without an employer making me), even a small game, unlike the other half dozen of unfinished projects on my computer.</p>
+<p>And I hope I gave you all a chuckle and a bit of happiness in your lives.</p>
+<h3 id="faq">FAQ</h3>
+<p><strong>Why did you name it BuildWars?</strong>
+Because I'm not witty enough for something more clever.</p>
+<p><strong>Why Queensdale?</strong>
+Because I imagine it's the most recognizable place for most players. I couldn't use a city, because they heavily rely on 3d models. Look at them in tyria3d without models, see if you recognize anything.</p>
+<p><strong>Will you open source the engine?</strong>
+I don't know yet. I've run out of time, and I didn't manage to clean up the code. If you want to build upon my work, contact me, and I'll consider it.</p>
+<p><strong>Have you done any other cool things?</strong>
+All my guild wars-related things are on <a href="https://kulinda.github.io/">https://kulinda.github.io/</a></a>.</p>
+<p><strong>How do I thank you?</strong>
+I released the game in order for people to play it. If you liked it, share it with your friends and guilds.</p>
+<p>Consider creating and sharing something on your own. It's a lot more boring work and a lot less instant gratification than consuming a video game, but the feeling when you finish something is worth it.</p>
+<p>If you feel like thanking me with money, reddit gold, or gems, please don't. Donate to a charity of your choice instead.</p>
+
+	</div>
+</main>
+
+</body>
+
+</html>
