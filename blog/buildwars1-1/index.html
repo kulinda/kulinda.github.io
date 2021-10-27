@@ -8,16 +8,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="theme-color" content="#440000" />
 	<title>Build Wars 1.1: Release and Dev Diary</title>
-	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;index.css" />
-	<link rel="stylesheet" type="text/css" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.css" />
-	<link rel="shortcut icon" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;favicon.ico">
+	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/index.css" />
+	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/kulinda.css" />
+	<link rel="shortcut icon" href="https://kulinda.github.io/favicon.ico">
 	
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="https:&#x2F;&#x2F;kulinda.github.io&#x2F;rss.xml">
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="https://kulinda.github.io/rss.xml">
 	
 
 	
 	
-	<script src="https:&#x2F;&#x2F;kulinda.github.io&#x2F;kulinda.js" async="async"></script>
+	<script src="https://kulinda.github.io/kulinda.js" async="async"></script>
 </head>
 
 <body>
@@ -29,15 +29,15 @@
 		
 		<small>
 			Written by kulinda on
-			<time datetime="2020-04-01">2020-04-01</time>
+			<time datetime=" 2020-04-01">2020-04-01</time>
 		</small>
 		
 	</div>
 	<div class="post-content">
+		
 		<p>On April 1st 2019, I released a game called Build Wars. You can <a href="https://kulinda.github.io/buildwars/">play the original game</a> or <a href="https://kulinda.github.io/blog/buildwars/">read the previous developer diary</a>.</p>
 <p>This year, I released <a href="https://kulinda.github.io/buildwars1-1/">an updated game</a>, and you're reading the updated developer diary right now.</p>
-<p id="zola-continue-reading"><a name="continue-reading"></a></p>
-<h3 id="let-s-rewrite-the-whole-thing">Let's rewrite the whole thing</h3>
+<span id="continue-reading"></span><h3 id="let-s-rewrite-the-whole-thing">Let's rewrite the whole thing</h3>
 <p>One of the things I learned from the previous game was that javascript is mostly unsuitable for this kind of game development. Important data structures (like tuples, hash maps over tuples, octrees) are not natively supported, and javascript does not provide the required tools to implement them in a performant way.</p>
 <p>Enter <a href="https://webassembly.org/">WebAssembly</a>. You can compile different languages (like C++) into WebAssembly, and your browser can execute WebAssembly. The execution is still sandboxed, so it's as safe as javascript, but you can use the full flexibility of C++. Porting Build Wars looked like a fun exercise to learn WebAssembly.</p>
 <p>Of course, learning one new and overwhelming technique at a time is for chumps. Instead of using a language I know (like C++), I used a language I didn't know: Rust. Rust is a modern systems programming language that's as fast as C++, but much safer. It doesn't need to stay compatible with concepts introduced in C in 1973, thus it can freely apply all the theoretical advances in language design made in the last half century.</p>

@@ -1,141 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
-        <url>
-            <loc>https://kulinda.github.io/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/buildwars/</loc>
-            
-                <lastmod>2019-04-01</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/buildwars1-1/</loc>
-            
-                <lastmod>2020-04-01</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/dyes/</loc>
-            
-                <lastmod>2018-05-26</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/launcher/</loc>
-            
-                <lastmod>2019-01-23</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/mounts/</loc>
-            
-                <lastmod>2018-06-25</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/blog/relaunch/</loc>
-            
-                <lastmod>2020-03-31</lastmod>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/buildwars/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/buildwars1-1/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/buildwars/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/dyes/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/home/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/launcher/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/misc/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/mounts/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/nav/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/categories/project/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/contact/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/dyes/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/home/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/launcher/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/legal/</loc>
-            
-        </url>
-    
-        <url>
-            <loc>https://kulinda.github.io/mounts/</loc>
-            
-        </url>
-    
+    <url>
+        <loc>https://kulinda.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/buildwars/</loc>
+        <lastmod>2019-04-01</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/buildwars1-1/</loc>
+        <lastmod>2020-04-01</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/droprates-eod-beta3/</loc>
+        <lastmod>2021-10-27</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/dyes/</loc>
+        <lastmod>2018-05-26</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/launcher/</loc>
+        <lastmod>2019-01-23</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/mounts/</loc>
+        <lastmod>2018-06-25</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/blog/relaunch/</loc>
+        <lastmod>2020-03-31</lastmod>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/buildwars/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/buildwars1-1/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/buildwars/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/dyes/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/home/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/launcher/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/misc/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/mounts/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/nav/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/categories/project/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/contact/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/dyes/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/home/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/launcher/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/legal/</loc>
+    </url>
+    <url>
+        <loc>https://kulinda.github.io/mounts/</loc>
+    </url>
 </urlset>

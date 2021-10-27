@@ -1,75 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Kulinda&#x27;s Guild Wars 2 Tools</title>
+      <title>Kulinda&#x27;s Guild Wars 2 Tools</title>
         <link>https://kulinda.github.io/</link>
         <description></description>
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://kulinda.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate>
-        
-            <item>
-                <title>Build Wars 1.1: Release and Dev Diary</title>
-                <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/buildwars1-1/</link>
-                <guid>https://kulinda.github.io/blog/buildwars1-1/</guid>
-                <description>&lt;p&gt;On April 1st 2019, I released a game called Build Wars. You can &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;buildwars&#x2F;&quot;&gt;play the original game&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;blog&#x2F;buildwars&#x2F;&quot;&gt;read the previous developer diary&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+        <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Droprates from EoD Beta #3</title>
+            <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/droprates-eod-beta3/</link>
+            <guid>https://kulinda.github.io/blog/droprates-eod-beta3/</guid>
+            <description>&lt;p&gt;Beta Characters get a copy of your account, which makes this week&#x27;s beta event a good opportunity to financially ruin your account for science. So I went ahead and gambled. Like a good scientist, I&#x27;m writing my results down right here.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Build Wars 1.1: Release and Dev Diary</title>
+            <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/buildwars1-1/</link>
+            <guid>https://kulinda.github.io/blog/buildwars1-1/</guid>
+            <description>&lt;p&gt;On April 1st 2019, I released a game called Build Wars. You can &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;buildwars&#x2F;&quot;&gt;play the original game&lt;&#x2F;a&gt; or &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;blog&#x2F;buildwars&#x2F;&quot;&gt;read the previous developer diary&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;This year, I released &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;buildwars1-1&#x2F;&quot;&gt;an updated game&lt;&#x2F;a&gt;, and you&#x27;re reading the updated developer diary right now.&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
-            <item>
-                <title>Relaunch and Updates</title>
-                <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/relaunch/</link>
-                <guid>https://kulinda.github.io/blog/relaunch/</guid>
-                <description>&lt;p&gt;I finally made time to do some overdue updates. Previously, the site was just a collection of independent projects, with no common layout or site structure. I wanted to integrate them, both technically and visually. And while I was touching everything, I made some upgrades along the way.&lt;&#x2F;p&gt;
+        </item>
+        <item>
+            <title>Relaunch and Updates</title>
+            <pubDate>Tue, 31 Mar 2020 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/relaunch/</link>
+            <guid>https://kulinda.github.io/blog/relaunch/</guid>
+            <description>&lt;p&gt;I finally made time to do some overdue updates. Previously, the site was just a collection of independent projects, with no common layout or site structure. I wanted to integrate them, both technically and visually. And while I was touching everything, I made some upgrades along the way.&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
-            <item>
-                <title>BuildWars: Release and Dev Diary</title>
-                <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/buildwars/</link>
-                <guid>https://kulinda.github.io/blog/buildwars/</guid>
-                <description>&lt;p&gt;There&#x27;s a new project, my biggest (and most useless) one yet: &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;buildwars&#x2F;&quot;&gt;Build Wars&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+        </item>
+        <item>
+            <title>BuildWars: Release and Dev Diary</title>
+            <pubDate>Mon, 01 Apr 2019 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/buildwars/</link>
+            <guid>https://kulinda.github.io/blog/buildwars/</guid>
+            <description>&lt;p&gt;There&#x27;s a new project, my biggest (and most useless) one yet: &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;buildwars&#x2F;&quot;&gt;Build Wars&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;Go play it, then come back to read about its development!&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
-            <item>
-                <title>Release: Account switcher</title>
-                <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/launcher/</link>
-                <guid>https://kulinda.github.io/blog/launcher/</guid>
-                <description>&lt;p&gt;In the patch of January 22nd, 2019, ArenaNet removed the -email and -password command line arguments,
+        </item>
+        <item>
+            <title>Release: Account switcher</title>
+            <pubDate>Wed, 23 Jan 2019 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/launcher/</link>
+            <guid>https://kulinda.github.io/blog/launcher/</guid>
+            <description>&lt;p&gt;In the patch of January 22nd, 2019, ArenaNet removed the -email and -password command line arguments,
 making it a bit more tricky to log into multiple accounts.&lt;&#x2F;p&gt;
 &lt;p&gt;It will take some time until all the fancy launchers are updated. Meanwhile, I thought I&#x27;d share my simple bash script that does the same.&lt;&#x2F;p&gt;
 &lt;p&gt;See my &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;launcher&#x2F;&quot;&gt;Guild Wars 2 Launcher&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
 &lt;p&gt;Enjoy!&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
-            <item>
-                <title>Release: Mount Adoption Helper</title>
-                <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/mounts/</link>
-                <guid>https://kulinda.github.io/blog/mounts/</guid>
-                <description>&lt;p&gt;When the initial set of mount skins were released, I &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Guildwars2&#x2F;comments&#x2F;7cfbcr&#x2F;mounts_and_math_how_much_for_the_skins_you_want&#x2F;&quot;&gt;did some math about the expected costs&lt;&#x2F;a&gt;. Getting exactly the skin(s) you want is surprisingly expensive.&lt;&#x2F;p&gt;
+        </item>
+        <item>
+            <title>Release: Mount Adoption Helper</title>
+            <pubDate>Mon, 25 Jun 2018 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/mounts/</link>
+            <guid>https://kulinda.github.io/blog/mounts/</guid>
+            <description>&lt;p&gt;When the initial set of mount skins were released, I &lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Guildwars2&#x2F;comments&#x2F;7cfbcr&#x2F;mounts_and_math_how_much_for_the_skins_you_want&#x2F;&quot;&gt;did some math about the expected costs&lt;&#x2F;a&gt;. Getting exactly the skin(s) you want is surprisingly expensive.&lt;&#x2F;p&gt;
 &lt;p&gt;To help players make better purchasing decisions, I decided to write my second project.&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
-            <item>
-                <title>First Project: Dye Browser</title>
-                <pubDate>Sat, 26 May 2018 00:00:00 +0000</pubDate>
-                <link>https://kulinda.github.io/blog/dyes/</link>
-                <guid>https://kulinda.github.io/blog/dyes/</guid>
-                <description>&lt;p&gt;I&#x27;m a paid programmer by day, and an unpaid programmer by night. For my nightly playtime, I&#x27;m always looking for interesting projects, to keep my skills sharp. I figured I&#x27;d do something useful and write some stuff for the amazing Guild Wars 2 community.&lt;&#x2F;p&gt;
+        </item>
+        <item>
+            <title>First Project: Dye Browser</title>
+            <pubDate>Sat, 26 May 2018 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/dyes/</link>
+            <guid>https://kulinda.github.io/blog/dyes/</guid>
+            <description>&lt;p&gt;I&#x27;m a paid programmer by day, and an unpaid programmer by night. For my nightly playtime, I&#x27;m always looking for interesting projects, to keep my skills sharp. I figured I&#x27;d do something useful and write some stuff for the amazing Guild Wars 2 community.&lt;&#x2F;p&gt;
 &lt;p&gt;Let&#x27;s get this train rolling!&lt;&#x2F;p&gt;
 </description>
-            </item>
-        
+        </item>
     </channel>
 </rss>
