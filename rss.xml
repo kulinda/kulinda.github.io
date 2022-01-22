@@ -7,7 +7,16 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://kulinda.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Wed, 27 Oct 2021 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 22 Jan 2022 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Dye Browser: major updates</title>
+            <pubDate>Sat, 22 Jan 2022 00:00:00 +0000</pubDate>
+            <link>https://kulinda.github.io/blog/dyes-update/</link>
+            <guid>https://kulinda.github.io/blog/dyes-update/</guid>
+            <description>&lt;p&gt;In an unrelated project, I encountered the &lt;a href=&quot;https:&#x2F;&#x2F;bottosson.github.io&#x2F;posts&#x2F;oklab&#x2F;&quot;&gt;oklab color space&lt;&#x2F;a&gt;, and I thought to myself: Huh, this might be useful in &lt;a href=&quot;https:&#x2F;&#x2F;kulinda.github.io&#x2F;dyes&#x2F;&quot;&gt;my dye browser&lt;&#x2F;a&gt; to find better matching dyes.&lt;&#x2F;p&gt;
+&lt;p&gt;So I dug into the code to implement it. And I couldn&#x27;t stop myself and gave the everything a good overhaul.&lt;&#x2F;p&gt;
+</description>
+        </item>
         <item>
             <title>Droprates from EoD Beta #3</title>
             <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>

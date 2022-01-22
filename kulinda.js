@@ -15,8 +15,8 @@
 			["Contact", "/contact/"],
 		]
 	];
-	let e_menu = null;
-	let e_btn = null;
+	let e_popup = null;
+	let menu_is_open = false;
 
 	function _e(tag, className, ...children) {
 		let e = document.createElement(tag);
@@ -34,18 +34,19 @@
 	}
 
 	function init() {
-		let e = document.createElement('div');
-		e.className = 'kulinda_menu';
-		let e_btn = _e('div', 'kulinda_dropdown', _t("Kulinda's GW2 Stuff"));
-		_a(e, e_btn);
-		document.body.appendChild(e);
-		e_btn.addEventListener('click', toggle_menu);
+		if (!window.__kulinda_menu_has_button) {
+			let e = document.createElement('div');
+			e.className = 'kulinda_menu _kulinda_menu';
+			let e_btn = _e('div', 'kulinda_dropdown', _t("Kulinda's GW2 Stuff"));
+			_a(e, e_btn);
+			_a(document.body, e);
+		}
 
-		e_menu = document.createElement('div');
-		e_menu.className = 'kulinda_menu_popup';
+		e_popup = document.createElement('div');
+		e_popup.className = 'kulinda_menu_popup';
 		for (let category of pages) {
-			if (e_menu.children.length > 0) {
-				_a(e_menu, _e('div', 'hr', _t('• • •')));
+			if (e_popup.children.length > 0) {
+				_a(e_popup, _e('div', 'hr', _t('• • •')));
 			}
 			let ul = _e('ul');
 			for (let page of category) {
@@ -55,46 +56,64 @@
 					a.classList.add('active-link');
 				_a(ul, _e('li', null, a));
 			}
-			_a(e_menu, ul);
+			_a(e_popup, ul);
 		}
-		e.appendChild(e_menu);
+		_a(document.body, e_popup);
+		window.addEventListener('click', click_anywhere, true);
 	}
 
-	function toggle_menu(event) {
-		event.stopPropagation();
-		if (e_menu.classList.contains('open'))
-			close_menu();
-		else
-			open_menu();
-	}
-
-	function open_menu() {
-		e_menu.classList.add('open');
-		document.addEventListener('click', click_outside, true);
-	}
-
-	function close_menu() {
-		e_menu.classList.remove('open');
-		document.removeEventListener('click', click_outside, true);
-	}
-
-	function click_outside(event) {
-		let e = event.target;
-		let found = false;
+	function find_ancestor_by_class(e, className) {
 		while (e) {
-			if (e === e_menu) {
-				found = true;
-				break;
+			if (e.classList && e.classList.contains(className)) {
+				return e;
 			}
-			if (e === e_btn) {
-				return;
-			}
-			e = e.parentNode;
+			e = e.parentElement;
 		}
-		if (!found) {
+		return null;
+	}
+
+	function click_anywhere(event) {
+		let target = event.target;
+		let menu_btn = find_ancestor_by_class(target, '_kulinda_menu');
+		// if the menu button was clicked, always toggle
+		if (menu_btn) {
+			event.stopPropagation();
+			toggle_menu(event, menu_btn);
+		}
+		else if (menu_is_open) {
+			// if the menu contents were clicked, do not interfere
+			let popup = find_ancestor_by_class(target, 'kulinda_menu_popup');
+			if (popup)
+				return;
+			// any other click closes the menu
 			//event.preventDefault();
 			close_menu();
 		}
+	}
+	function toggle_menu(event, btn) {
+		event.stopPropagation();
+		if (menu_is_open)
+			close_menu();
+		else
+			open_menu(btn);
+	}
+
+	function open_menu(btn) {
+		if (menu_is_open)
+			return;
+		let rect = btn.getBoundingClientRect();
+		menu_is_open = true;
+		e_popup.style.left = (rect.left + window.scrollX) + 'px';
+		e_popup.style.top = (rect.top + rect.height + window.scrollY + 5) + 'px';
+		e_popup.style.width = rect.width + 'px';
+		e_popup.classList.add('open');
+	}
+
+	function close_menu() {
+		if (!menu_is_open)
+			return;
+		menu_is_open = false;
+		e_popup.classList.remove('open');
 	}
 
 	let initialized = false;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="theme-color" content="#440000" />
+	<title>Dye Browser: major updates</title>
+	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/index.css" />
+	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/kulinda.css" />
+	<link rel="shortcut icon" href="https://kulinda.github.io/favicon.ico">
+	
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="https://kulinda.github.io/rss.xml">
+	
+
+	
+	
+	<script src="https://kulinda.github.io/kulinda.js" async="async"></script>
+</head>
+
+<body>
+	
+<main class="post">
+	<div class="post-header">
+		<h1>Dye Browser: major updates</h1>
+		<small></small><br />
+		
+		<small>
+			Written by kulinda on
+			<time datetime=" 2022-01-22">2022-01-22</time>
+		</small>
+		
+	</div>
+	<div class="post-content">
+		
+		<p>In an unrelated project, I encountered the <a href="https://bottosson.github.io/posts/oklab/">oklab color space</a>, and I thought to myself: Huh, this might be useful in <a href="https://kulinda.github.io/dyes/">my dye browser</a> to find better matching dyes.</p>
+<p>So I dug into the code to implement it. And I couldn't stop myself and gave the everything a good overhaul.</p>
+<span id="continue-reading"></span>
+<p>After dedusting the code from 2018 and updating the toolchain and the dependencies, I started implementing the oklab formulas. In an extensive user study (n = 2), we agreed that oklab produced slightly better colors than a simple RGB comparison, most of the time.</p>
+<p>I also added <a href="https://kulinda.github.io/dyes/#map">a color map</a>, which (thanks to the oklab color space) looks a lot better than the hue circles you usually see. And I greatly extended <a href="https://kulinda.github.io/dyes/#faq">the FAQ</a>.</p>
+<p>But I have grown professionally in the last 3.5 years, and I just couldn't bear to see this old shoddy work. I managed to stop myself from rewriting everything in TypeScript, but I did redo the whole layout, parts of the user workflow, and I converted a couple of components into modern React functional components.</p>
+<p>But now I got to stop playing around and actually publish this thing.</p>
+<p>Hope you enjoy, and I'm looking forward to all the new character styles I'll see on the expansion!</p>
+
+	</div>
+</main>
+
+</body>
+
+</html>
