@@ -8,15 +8,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<meta name="theme-color" content="#440000" />
 	<title>Dye Browser: major updates</title>
-	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/index.css" />
-	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/kulinda.css" />
 	<link rel="shortcut icon" href="https://kulinda.github.io/favicon.ico">
 	
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="https://kulinda.github.io/rss.xml">
 	
 
 	
-	
+<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/blog.css" />
+
+	<link rel="stylesheet" type="text/css" href="https://kulinda.github.io/kulinda.css" />
 	<script src="https://kulinda.github.io/kulinda.js" async="async"></script>
 </head>
 
@@ -36,7 +36,7 @@
 	<div class="post-content">
 		
 		<p>In an unrelated project, I encountered the <a href="https://bottosson.github.io/posts/oklab/">oklab color space</a>, and I thought to myself: Huh, this might be useful in <a href="https://kulinda.github.io/dyes/">my dye browser</a> to find better matching dyes.</p>
-<p>So I dug into the code to implement it. And I couldn't stop myself and gave the everything a good overhaul.</p>
+<p>So I dug into the code to implement it. And I couldn't stop myself and gave everything a good overhaul.</p>
 <span id="continue-reading"></span>
 <p>After dedusting the code from 2018 and updating the toolchain and the dependencies, I started implementing the oklab formulas. In an extensive user study (n = 2), we agreed that oklab produced slightly better colors than a simple RGB comparison, most of the time.</p>
 <p>I also added <a href="https://kulinda.github.io/dyes/#map">a color map</a>, which (thanks to the oklab color space) looks a lot better than the hue circles you usually see. And I greatly extended <a href="https://kulinda.github.io/dyes/#faq">the FAQ</a>.</p>
